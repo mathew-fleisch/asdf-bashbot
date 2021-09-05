@@ -11,14 +11,15 @@
 
 - [Dependencies](#dependencies)
 - [Install](#install)
-- [Why?](#why)
 - [Contributing](#contributing)
 - [License](#license)
 
 # Dependencies
 
-- `bash`, `curl`, `tar`: generic POSIX utilities.
-- `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
+- `bash`, `curl`: generic POSIX utilities.
+- `SLACK_TOKEN`: set this environment variable to authenticate Bashbot with your Slack workspace
+- `BASHBOT_CONFIG_FILEPATH`: set this environment variable to set the filepath + filename to the configuration json file
+- config.json: See [examples directory](https://github.com/mathew-fleisch/bashbot/tree/main/examples) for examples of the configuration json
 
 # Install
 
@@ -47,7 +48,9 @@ bashbot --version
 ```
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
-install & manage versions.
+install & manage versions of asdf plugins.
+
+For more information about [bashbot](https://github.com/mathew-fleisch/bashbot), check the [bashbot-example repository](https://github.com/mathew-fleisch/bashbot-example) for deployment examples and the [examples directory](https://github.com/mathew-fleisch/bashbot/tree/main/examples) for configuration examples about extending Bashbot to your slack workspace.
 
 # Contributing
 
