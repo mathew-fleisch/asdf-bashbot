@@ -35,14 +35,15 @@ list_all_versions() {
 }
 
 download_release() {
-  local version filename url
+  local version filename url download_path
   version="$1"
   filename="$2"
+  download_path="$3"
 
   url="$GH_REPO/releases/download/v${version}/${filename}"
 
   echo "* Downloading $TOOL_NAME release $version..."
-  curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
+  curl "${curl_opts[@]}" -o "$download_path/bashbot" -C - "$url" || fail "Could not download $url"
 }
 
 
@@ -65,11 +66,11 @@ install_version() {
   (
     mkdir -p "$install_path"
     download_release "$version" "$release_filename" "$install_path"
-
+    chmod a+x "$install_path/bashbot"
     # TODO: Asert bashbot executable exists.
     local tool_cmd
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
-    test -x "$install_path/bin/$tool_cmd" || fail "Expected $install_path/bin/$tool_cmd to be executable."
+    test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
 
     echo "$TOOL_NAME $version installation was successful!"
   ) || (
