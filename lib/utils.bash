@@ -31,7 +31,7 @@ list_github_tags() {
 }
 
 list_all_versions() {
-   list_github_tags
+  list_github_tags
 }
 
 download_release() {
@@ -45,7 +45,6 @@ download_release() {
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$download_path/bashbot" -C - "$url" || fail "Could not download $url"
 }
-
 
 install_version() {
   local install_type="$1"
