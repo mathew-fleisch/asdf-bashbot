@@ -3,7 +3,7 @@
 # asdf-bashbot [![Build](https://github.com/mathew-fleisch/asdf-bashbot/actions/workflows/build.yml/badge.svg)](https://github.com/mathew-fleisch/asdf-bashbot/actions/workflows/build.yml) [![Lint](https://github.com/mathew-fleisch/asdf-bashbot/actions/workflows/lint.yml/badge.svg)](https://github.com/mathew-fleisch/asdf-bashbot/actions/workflows/lint.yml)
 
 
-[bashbot](https://github.com/mathew-fleisch/bashbot-example) plugin for the [asdf version manager](https://asdf-vm.com).
+[bashbot](https://github.com/mathew-fleisch/bashbot) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 
