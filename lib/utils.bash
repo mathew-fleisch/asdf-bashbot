@@ -66,10 +66,9 @@ install_version() {
   (
     mkdir -p "$install_path/bin"
     download_release "$version" "$release_filename" "$install_path/bin"
-    chmod a+x "$install_path/bashbot"
-    # TODO: Asert bashbot executable exists.
     local tool_cmd
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
+    chmod a+x "$install_path/bin/$tool_cmd"
     test -x "$install_path/bin/$tool_cmd" || fail "Expected $install_path/bin/$tool_cmd to be executable."
 
     echo "$TOOL_NAME $version installation was successful!"
