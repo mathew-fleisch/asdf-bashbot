@@ -5,7 +5,7 @@ set -euo pipefail
 # TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for bashbot.
 GH_REPO="https://github.com/mathew-fleisch/bashbot"
 TOOL_NAME="bashbot"
-TOOL_TEST="bashbot --version"
+TOOL_TEST="bashbot version"
 
 fail() {
   echo -e "asdf-$TOOL_NAME: $*"
@@ -27,7 +27,8 @@ sort_versions() {
 list_github_tags() {
   git ls-remote --tags --refs "$GH_REPO" |
     grep -o 'refs/tags/.*' | cut -d/ -f3- |
-    sed 's/^v//' # NOTE: You might want to adapt this sed to remove non-version strings from tags
+    sed 's/^bashbot-//' |
+    sed 's/^v//'
 }
 
 list_all_versions() {
@@ -36,11 +37,14 @@ list_all_versions() {
 
 download_release() {
   local version filename url download_path
+  post_v2_prefix="bashbot-"
   version="$1"
   filename="$2"
   download_path="$3"
-
-  url="$GH_REPO/releases/download/v${version}/${filename}"
+  if [[ "$version" =~ ^1 ]]; then
+    post_v2_prefix=""
+  fi
+  url="$GH_REPO/releases/download/${post_v2_prefix}v${version}/${filename}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$download_path/bashbot" -C - "$url" || fail "Could not download $url"
