@@ -44,7 +44,7 @@ asdf install bashbot latest
 asdf global bashbot latest
 
 # Now bashbot commands are available
-bashbot --version
+bashbot version
 ```
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
